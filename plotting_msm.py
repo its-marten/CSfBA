@@ -219,13 +219,8 @@ ratio = 0.63
 seed=42
 
 band_rows_combinations = [(500,1), (250, 2), (125, 4), (100, 5), (50, 10), (25,20), (20, 25), (10, 50), (5, 100), (4, 125), (2, 250), (1, 500)]
-#band_rows_combinations = [(100, 1), (50, 2), (25, 4), (20, 5), (10, 10), (5, 20), (4,25), (2, 50), (1, 100)] # testing for only half of the observations
 
 msm_results = bootstrap_samples_msm(df_msm, df_lsh, ratio, number_bootstrap, band_rows_combinations, tuning_parameters, alpha, beta, gamma, mu, delta, epsilon_TMWM, seed)
-
-### MSM PLOTS ###
-#plot_results(msm_results, msm_results_old)
-
 # %%
 plot_results(msm_results)
 
