@@ -95,46 +95,6 @@ def bootstrap_samples_lsh(data, ratio, number_bootstrap, b_r_comb, seed):
     return results_lsh
     
 
-def plot_results(results, results_old):
-    
-    # Convert results to a DataFrame for easier plotting
-    df = pd.DataFrame(results)
-    df_old = pd.DataFrame(results_old)
-
-    # Sort the DataFrame by fraction_comparisons for proper line plotting
-    df = df.sort_values(by='fraction_comparisons')
-    df_old = df_old.sort_values(by='fraction_comparisons')
-
-    # Plot PC vs Fraction Comparisons
-    plt.figure(figsize=(12, 4))
-    plt.subplot(1, 3, 1)
-    plt.plot(df['fraction_comparisons'], df['pc'], c='blue', label='PC New')
-    plt.plot(df_old['fraction_comparisons'], df_old['pc'], c='red', label='PC Old')
-    plt.xlabel('Fraction Comparisons')
-    plt.ylabel('Pair Completeness (PC)')
-    plt.title('PC vs Fraction Comparisons')
-    plt.legend()
-
-    # Plot PQ vs Fraction Comparisons
-    plt.subplot(1, 3, 2)
-    plt.plot(df['fraction_comparisons'], df['pq'], c='blue', label='PQ New')
-    plt.plot(df_old['fraction_comparisons'], df_old['pq'], c='red', label='PQ Old')
-    plt.xlabel('Fraction Comparisons')
-    plt.ylabel('Pair Quality (PQ)')
-    plt.title('PQ vs Fraction Comparisons')
-    plt.legend()
-
-    # Plot F1* vs Fraction Comparisons
-    plt.subplot(1, 3, 3)
-    plt.plot(df['fraction_comparisons'], df['f1_star'], c='blue', label='F1* New')
-    plt.plot(df_old['fraction_comparisons'], df_old['f1_star'], c='red', label='F1* Old')
-    plt.xlabel('Fraction Comparisons')
-    plt.ylabel('F1* Measure')
-    plt.title('F1* vs Fraction Comparisons')
-    plt.legend()
-
-    plt.tight_layout()
-    plt.show()
 
 
 number_bootstrap = 5
@@ -148,12 +108,6 @@ lsh_results_old = bootstrap_samples_lsh(old_data, ratio, number_bootstrap, band_
 
 print(lsh_results, lsh_results_old)
 
-### LSH PLOTS ###
-plot_results(lsh_results, lsh_results_old)
-
-# %%
-import pandas as pd
-import matplotlib.pyplot as plt
 
 def plot_results(results, results_old):
     # Convert results to a DataFrame for easier plotting
